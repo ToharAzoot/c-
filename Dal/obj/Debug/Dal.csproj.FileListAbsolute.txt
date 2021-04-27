@@ -31,3 +31,15 @@ C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChil
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dal\obj\Debug\Dal.dll
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dal\obj\Debug\Dal.pdb
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dal\obj\Debug\Dal.csprojAssemblyReference.cache
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\Dal.dll.config
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\Dal.dll
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\Dal.pdb
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\EntityFramework.dll
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\EntityFramework.xml
+C:\Users\rucha\Desktop\c-\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rucha\Desktop\c-\Dal\obj\Debug\Dal.csprojAssemblyReference.cache
+C:\Users\rucha\Desktop\c-\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+C:\Users\rucha\Desktop\c-\Dal\obj\Debug\Dal.csproj.CopyComplete
+C:\Users\rucha\Desktop\c-\Dal\obj\Debug\Dal.dll
+C:\Users\rucha\Desktop\c-\Dal\obj\Debug\Dal.pdb

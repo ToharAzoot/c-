@@ -13,10 +13,13 @@ namespace Dal
             using (kindergardenEntities db = new kindergardenEntities())
             {
 
-                //List<string> Children = db.empGetChildIdSp().ToList();
+                List<int?> Children = db.empGetChildIdSp().ToList();
+                List<string> temp = new List<string>();
+                foreach (int? c in Children)
+                    temp.Add(Convert.ToString(c));
                 List<Class1> podto = new List<Class1>();
-                //foreach (string c in Children)
-                //    podto.Add(new Class1(c));
+                foreach (string t in temp)
+                    podto.Add(new Class1(t));
                 return podto;
             }
         }

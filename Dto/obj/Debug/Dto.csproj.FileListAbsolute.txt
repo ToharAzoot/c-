@@ -40,3 +40,18 @@ C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChil
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.csproj.CopyComplete
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.dll
 C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.pdb
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dto.dll.config
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dto.dll
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dto.pdb
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dal.dll
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\EntityFramework.dll
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dal.pdb
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\Dal.dll.config
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\EntityFramework.xml
+C:\Users\rucha\Desktop\c-\Dto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\rucha\Desktop\c-\Dto\obj\Debug\Dto.csprojAssemblyReference.cache
+C:\Users\rucha\Desktop\c-\Dto\obj\Debug\Dto.csproj.CoreCompileInputs.cache
+C:\Users\rucha\Desktop\c-\Dto\obj\Debug\Dto.csproj.CopyComplete
+C:\Users\rucha\Desktop\c-\Dto\obj\Debug\Dto.dll
+C:\Users\rucha\Desktop\c-\Dto\obj\Debug\Dto.pdb

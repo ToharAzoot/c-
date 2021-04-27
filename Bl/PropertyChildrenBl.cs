@@ -19,7 +19,7 @@ namespace Bl
 
             }
         }
-     public static bool CheckIDNo(String id)
+        public static bool CheckIDNo(String id)
         {
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int count = 0;
@@ -41,14 +41,6 @@ namespace Bl
 
             return (count % 10 == 0);
         }
-        //public static string GetChild(string id)
-        //{
-        //    using (KindergardenEntities db = new KindergardenEntities())
-        //    {
-        //        string pass = (from o in db.Connections where o.UserId.Contains(id) select o.ChildId).FirstOrDefault();
-        //        return pass;
-        //    }
-        //}
         public static string GetChild(string id)
         {
             using (kindergardenEntities db = new kindergardenEntities())
@@ -62,7 +54,12 @@ namespace Bl
             using (kindergardenEntities db = new kindergardenEntities())
             {
                 Children pass = PropertyChildrenDal.Getallpropertyc(id);
-                return pass;
+                Children c = new Children();
+                c.ChildId = pass.ChildId;
+                c.ChildName = pass.ChildName;
+                c.ChildGroup = pass.ChildGroup;
+                c.ChildClass = pass.ChildClass;
+                return c;
             }
         }
         public static bool Checkifthereislike(string id)
@@ -121,14 +118,6 @@ namespace Bl
             }
             return false;
         }
-        //public static string GetUser(string id)
-        //{
-        //    using (KindergardenEntities db = new KindergardenEntities())
-        //    {
-        //        string name = (from o in db.Users where o.Password.Contains(id) select o.UserName).FirstOrDefault();
-        //        return name;
-        //    }
-        //}
         public static string GetUser(string id)
         {
             using (kindergardenEntities db = new kindergardenEntities())
@@ -150,6 +139,21 @@ namespace Bl
         //        return true;
         //    }
         //}
-
+        //public static string GetChild(string id)
+        //{
+        //    using (KindergardenEntities db = new KindergardenEntities())
+        //    {
+        //        string pass = (from o in db.Connections where o.UserId.Contains(id) select o.ChildId).FirstOrDefault();
+        //        return pass;
+        //    }
+        //}
+        //public static string GetUser(string id)
+        //{
+        //    using (KindergardenEntities db = new KindergardenEntities())
+        //    {
+        //        string name = (from o in db.Users where o.Password.Contains(id) select o.UserName).FirstOrDefault();
+        //        return name;
+        //    }
+        //}
     }
 }
