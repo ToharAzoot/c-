@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kindergardenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ArrivalChildren">
+    <Key>
+      <PropertyRef Name="ChildId" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="ChildId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ArrivalTime" Type="Time" Precision="7" />
+    <NavigationProperty Name="Children" Relationship="Self.FK_ArrivalChildren_Children" FromRole="ArrivalChildren" ToRole="Children" />
+  </EntityType>
+  <EntityType Name="Children">
+    <Key>
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="ChildId" Type="Int32" Nullable="false" />
+    <Property Name="ChildName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChildClass" Type="Int32" Nullable="false" />
+    <Property Name="ChildGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ArrivalChildren" Relationship="Self.FK_ArrivalChildren_Children" FromRole="Children" ToRole="ArrivalChildren" />
+    <NavigationProperty Name="DailyAlerts" Relationship="Self.FK_Children_DailyAlerts2" FromRole="Children" ToRole="DailyAlerts" />
+    <NavigationProperty Name="Parent" Relationship="Self.ChildsParent" FromRole="Children" ToRole="Parent" />
+  </EntityType>
+  <EntityType Name="Connections">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="UserId" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ChildId" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DailyAlerts">
+    <Key>
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="ChildId" Type="Int32" Nullable="false" />
+    <Property Name="AvgTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="IsComing_" Type="Boolean" Nullable="false" />
+    <Property Name="IsMissing_" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Children" Relationship="Self.FK_Children_DailyAlerts2" FromRole="DailyAlerts" ToRole="Children" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="IDMessage" />
+    </Key>
+    <Property Name="IDMessage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDParent" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="MessegeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDChild" Type="Int32" />
+    <NavigationProperty Name="Parent" Relationship="Self.FK_Message_Parent" FromRole="Message" ToRole="Parent" />
+  </EntityType>
+  <EntityType Name="Parent">
+    <Key>
+      <PropertyRef Name="IDParent" />
+    </Key>
+    <Property Name="IDParent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TZ" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Addresss" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="NameChild" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Message" Relationship="Self.FK_Message_Parent" FromRole="Parent" ToRole="Message" />
+    <NavigationProperty Name="Children" Relationship="Self.ChildsParent" FromRole="Parent" ToRole="Children" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ArrivalChildren_Children">
+    <End Role="Children" Type="Self.Children" Multiplicity="1" />
+    <End Role="ArrivalChildren" Type="Self.ArrivalChildren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="ChildId" />
+      </Principal>
+      <Dependent Role="ArrivalChildren">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Children_DailyAlerts2">
+    <End Role="DailyAlerts" Type="Self.DailyAlerts" Multiplicity="1" />
+    <End Role="Children" Type="Self.Children" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DailyAlerts">
+        <PropertyRef Name="ChildId" />
+      </Principal>
+      <Dependent Role="Children">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Parent">
+    <End Role="Parent" Type="Self.Parent" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parent">
+        <PropertyRef Name="IDParent" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="IDParent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ChildsParent">
+    <End Role="Children" Type="Self.Children" Multiplicity="*" />
+    <End Role="Parent" Type="Self.Parent" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="kindergardenEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ArrivalChildren" EntityType="Self.ArrivalChildren" />
+    <EntitySet Name="Children" EntityType="Self.Children" />
+    <EntitySet Name="Connections" EntityType="Self.Connections" />
+    <EntitySet Name="DailyAlerts" EntityType="Self.DailyAlerts" />
+    <EntitySet Name="Message" EntityType="Self.Message" />
+    <EntitySet Name="Parent" EntityType="Self.Parent" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_ArrivalChildren_Children" Association="Self.FK_ArrivalChildren_Children">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="ArrivalChildren" EntitySet="ArrivalChildren" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Children_DailyAlerts2" Association="Self.FK_Children_DailyAlerts2">
+      <End Role="DailyAlerts" EntitySet="DailyAlerts" />
+      <End Role="Children" EntitySet="Children" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Parent" Association="Self.FK_Message_Parent">
+      <End Role="Parent" EntitySet="Parent" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="ChildsParent" Association="Self.ChildsParent">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="Parent" EntitySet="Parent" />
+    </AssociationSet>
+    <FunctionImport Name="empGetChildIdSp" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="empGetChildIsComingSp" ReturnType="Collection(Boolean)">
+      <Parameter Name="ChildId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="empGetChildIsMissingSp" ReturnType="Collection(Boolean)">
+      <Parameter Name="ChildId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="empGetChildSp" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="empGetPasswordSp" ReturnType="Collection(Int32)">
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="empGetTopUserIdSp" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="empGetUserIdSp" ReturnType="Collection(String)">
+      <Parameter Name="ChildId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="empGetUserSp" ReturnType="Collection(String)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(kindergardenModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(kindergardenModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

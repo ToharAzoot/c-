@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kindergardenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ArrivalChildren">
+    <Key>
+      <PropertyRef Name="ChildId" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="ChildId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="ArrivalTime" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Children">
+    <Key>
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="ChildId" Type="int" Nullable="false" />
+    <Property Name="ChildName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChildClass" Type="int" Nullable="false" />
+    <Property Name="ChildGroup" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChildsParent">
+    <Key>
+      <PropertyRef Name="IDParent" />
+      <PropertyRef Name="IDChild" />
+    </Key>
+    <Property Name="IDParent" Type="int" Nullable="false" />
+    <Property Name="IDChild" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Connections">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="UserId" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="ChildId" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DailyAlerts">
+    <Key>
+      <PropertyRef Name="ChildId" />
+    </Key>
+    <Property Name="ChildId" Type="int" Nullable="false" />
+    <Property Name="AvgTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="IsComing?" Type="bit" Nullable="false" />
+    <Property Name="IsMissing?" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="IDMessage" />
+    </Key>
+    <Property Name="IDMessage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDParent" Type="int" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="MessegeType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IDChild" Type="int" />
+  </EntityType>
+  <EntityType Name="Parent">
+    <Key>
+      <PropertyRef Name="IDParent" />
+    </Key>
+    <Property Name="IDParent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TZ" Type="nvarchar" MaxLength="9" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone1" Type="nvarchar" MaxLength="10" />
+    <Property Name="Phone2" Type="nvarchar" MaxLength="10" />
+    <Property Name="Addresss" Type="nvarchar" MaxLength="300" />
+    <Property Name="NameChild" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="9" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ArrivalChildren_Children">
+    <End Role="Children" Type="Self.Children" Multiplicity="1" />
+    <End Role="ArrivalChildren" Type="Self.ArrivalChildren" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="ChildId" />
+      </Principal>
+      <Dependent Role="ArrivalChildren">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Children_DailyAlerts2">
+    <End Role="DailyAlerts" Type="Self.DailyAlerts" Multiplicity="1" />
+    <End Role="Children" Type="Self.Children" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DailyAlerts">
+        <PropertyRef Name="ChildId" />
+      </Principal>
+      <Dependent Role="Children">
+        <PropertyRef Name="ChildId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChildsParent_Children">
+    <End Role="Children" Type="Self.Children" Multiplicity="1" />
+    <End Role="ChildsParent" Type="Self.ChildsParent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="ChildId" />
+      </Principal>
+      <Dependent Role="ChildsParent">
+        <PropertyRef Name="IDChild" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChildsParent_Parent">
+    <End Role="Parent" Type="Self.Parent" Multiplicity="1" />
+    <End Role="ChildsParent" Type="Self.ChildsParent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parent">
+        <PropertyRef Name="IDParent" />
+      </Principal>
+      <Dependent Role="ChildsParent">
+        <PropertyRef Name="IDParent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Parent">
+    <End Role="Parent" Type="Self.Parent" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parent">
+        <PropertyRef Name="IDParent" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="IDParent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="empGetChildIdSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="empGetChildIsComingSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChildId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="empGetChildIsMissingSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChildId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="empGetChildSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="empGetPasswordSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="empGetTopUserIdSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="empGetUserIdSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ChildId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="empGetUserSp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserId" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="kindergardenModelStoreContainer">
+    <EntitySet Name="ArrivalChildren" EntityType="Self.ArrivalChildren" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Children" EntityType="Self.Children" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChildsParent" EntityType="Self.ChildsParent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Connections" EntityType="Self.Connections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DailyAlerts" EntityType="Self.DailyAlerts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ArrivalChildren_Children" Association="Self.FK_ArrivalChildren_Children">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="ArrivalChildren" EntitySet="ArrivalChildren" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Children_DailyAlerts2" Association="Self.FK_Children_DailyAlerts2">
+      <End Role="DailyAlerts" EntitySet="DailyAlerts" />
+      <End Role="Children" EntitySet="Children" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChildsParent_Children" Association="Self.FK_ChildsParent_Children">
+      <End Role="Children" EntitySet="Children" />
+      <End Role="ChildsParent" EntitySet="ChildsParent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChildsParent_Parent" Association="Self.FK_ChildsParent_Parent">
+      <End Role="Parent" EntitySet="Parent" />
+      <End Role="ChildsParent" EntitySet="ChildsParent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Parent" Association="Self.FK_Message_Parent">
+      <End Role="Parent" EntitySet="Parent" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

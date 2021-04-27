@@ -1,0 +1,42 @@
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dto.dll
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dto.pdb
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dal.dll
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dal.pdb
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\obj\Debug\Dto.csprojAssemblyReference.cache
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\obj\Debug\Dto.csproj.CopyComplete
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\obj\Debug\Dto.dll
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\obj\Debug\Dto.pdb
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dto.dll.config
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\Dal.dll.config
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\project1\SaftyChildren\Dto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.dll.config
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.dll
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.pdb
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.dll
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.pdb
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.dll.config
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.csprojAssemblyReference.cache
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.csproj.CopyComplete
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.dll
+C:\Users\User\Desktop\project\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.pdb
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.dll.config
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.dll
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dto.pdb
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.dll
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.dll
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.pdb
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\Dal.dll.config
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.xml
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.csprojAssemblyReference.cache
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.csproj.CopyComplete
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.dll
+C:\Users\טהר אזוט\Documents\פרויקט מעון\KinderGarden\SafetyChildren-Asp-.Net-Web-Api\Dto\obj\Debug\Dto.pdb
